@@ -3,7 +3,7 @@
 var fs = require('fs'),
   path = require('path'),
   http = require('http'),
-  cors = require('cors')
+  cors = require('cors-connect').accept
 
 var app = require('connect')()
 var swaggerTools = require('swagger-tools')
@@ -13,15 +13,15 @@ var serverPort = 3000
 // swaggerRouter configuration
 var options = {
   swaggerUi: path.join(__dirname, '/swagger.json'),
-  controllers: path.join(__dirname, './controllers'),
-  useStubs: process.env.NODE_ENV === 'development', // Conditionally turn on stubs (mock mode)
+  // controllers: path.join(__dirname, './controllers'),
+  useStubs: true,
 }
 
 // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
 var spec = fs.readFileSync(path.join(__dirname, 'api/swagger.yaml'), 'utf8')
 var swaggerDoc = jsyaml.safeLoad(spec)
 
-app.use(cors)
+app.use(cors.acceptNext)
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
