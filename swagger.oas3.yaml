@@ -46,6 +46,14 @@ components:
           format: date
         lastModifiedBy:
           type: string
+    Users:
+      type: object
+      properties:
+        total:
+          type: number
+          format: int32
+      items:
+        $ref: '#/components/schemas/ArrayOfUser'
     ArrayOfUser:
       type: array
       items:
@@ -92,7 +100,7 @@ paths:
           content: # Response body
             application/json: # Media type
               schema:
-                $ref: '#/components/schemas/ArrayOfUser'
+                $ref: '#/components/schemas/Users'
   /user/{id}:
     get:
       description: Gets a `User` object by id
@@ -119,7 +127,7 @@ paths:
           schema:
             type: string
           description: User's unique id
-        - in: body
+        - in: query
           name: userData
           schema:
             $ref: '#/components/schemas/User'

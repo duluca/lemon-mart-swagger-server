@@ -46,6 +46,14 @@ definitions:
         format: date
       lastModifiedBy:
         type: string
+  Users:
+    type: object
+    properties:
+      total:
+        type: number
+        format: int32
+      items:
+        $ref: '#/definitions/ArrayOfUser'
   ArrayOfUser:
     type: array
     items:
@@ -88,7 +96,7 @@ paths:
         200: # Response
           description: OK
           schema:
-            $ref: '#/definitions/ArrayOfUser'
+            $ref: '#/definitions/Users'
   /user/{id}:
     get:
       description: Gets a `User` object by id
