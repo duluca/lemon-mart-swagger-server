@@ -113,13 +113,13 @@ paths:
     put:
       description: Updates a `User` object given id
       parameters:
-        - in: query
+        - in: path
           name: id
           required: true
           schema:
             type: string
           description: User's unique id
-        - in: query
+        - in: body
           name: userData
           schema:
             $ref: '#/components/schemas/User'
