@@ -3,7 +3,7 @@
 var fs = require('fs'),
   path = require('path'),
   http = require('http'),
-  cors = require('cors-connect').accept
+  cors = require('cors')
 
 var app = require('connect')()
 var swaggerTools = require('swagger-tools')
@@ -21,7 +21,7 @@ var options = {
 var spec = fs.readFileSync(path.join(__dirname, 'api/swagger.yaml'), 'utf8')
 var swaggerDoc = jsyaml.safeLoad(spec)
 
-app.use(cors.acceptNext)
+app.use(cors())
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function(middleware) {
