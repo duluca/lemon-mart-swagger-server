@@ -1,5 +1,14 @@
 # lemon-mart-swagger-server
 
+> To Run LemonMart Swagger Server
+
+Execute the following commands:
+
+1. `npm install`
+2. `npm run docker:build`
+3. `npm run docker:debug`
+4. Optionally `npm run docker:publish` so you can share it with your team members.
+
 > Mock Swagger API server
 
 1. To generate the server execute the following command:
